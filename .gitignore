@@ -1,0 +1,48 @@
+# ===============================
+# STM32 & Eclipse/CubeIDE ignore
+# ===============================
+
+# Build output directories
+/Debug/
+/Release/
+/build/
+/out/
+/bin/
+/obj/
+
+# Compiled object files and binaries
+*.o
+*.d
+*.elf
+*.map
+*.bin
+*.hex
+*.list
+
+# IDE specific files
+.settings/
+.metadata/
+*.launch
+*.cproject
+*.project
+*.mxproject
+*.log
+
+# Temporary or backup files
+*~
+*.bak
+*.swp
+*.tmp
+*.user
+*.suo
+*.userprefs
+*.DS_Store
+Thumbs.db
+
+# STM32CubeMX generated cache
+*.ioc-backup
+*.ioc.bak
+
+# Generated CMSIS / HAL template files (if regenerated automatically)
+Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_*
+
