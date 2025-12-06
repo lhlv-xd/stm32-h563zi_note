@@ -87,12 +87,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   yy_uart_init();
-  printf("test printf123\r\n");
-  yy_example_uart_show();
-  yy_example_uart_poll();
+  printf("USART3 Interrupt\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */

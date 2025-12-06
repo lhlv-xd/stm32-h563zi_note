@@ -8,6 +8,11 @@
 
 #include "yy_uart.h"
 
+/* Variable */
+// for interrupt
+uint8_t rxbuf[1];
+
+
 /* Function */
 /**
  * @brief printf
@@ -25,6 +30,9 @@ void yy_uart_init(void)
 {
 	/* Customization API */
 	MX_USART3_UART_Init();
+
+	/* First receive data for interrupt */
+	HAL_UART_Receive_IT(&defaultUartHdl, rxbuf, sizeof(rxbuf));
 }
 
 /**
@@ -74,5 +82,23 @@ void yy_example_uart_poll(void)
 		}
 		/* Timeout */
 
+	}
+}
+
+/**************************************************************************
+ * UART Interrupt
+ **************************************************************************/
+/**
+ * @brief Example Code: Receive and send a byte by defaultUartHdl(Tx: PD8, Rx: PD9)
+ * @note  It's declared in stm32h5xx_hal_uart.h
+ */
+__weak void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	/* USART3 */
+	if (huart->Instance == USART3) {
+		// transmit the message received
+		HAL_UART_Transmit_IT(&defaultUartHdl, rxbuf, sizeof(rxbuf));
+		// set the next receiver
+		HAL_UART_Receive_IT(&defaultUartHdl, rxbuf, sizeof(rxbuf));
 	}
 }
