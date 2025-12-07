@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "yy_peripheral_interface.h"
+#include "yy_shell_interface.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -88,8 +89,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  yy_uart_init();
-  printf("USART3 Interrupt\r\n");
+  yy_shell_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -99,6 +99,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    if (exec_shell_command) {
+      exec_shell_command = 0;
+      yysh_exec(shellbuf);
+    }
   }
   /* USER CODE END 3 */
 }
