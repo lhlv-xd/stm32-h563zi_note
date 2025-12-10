@@ -11,6 +11,7 @@
 #include "main.h"
 #include "gpio.h"
 #include "usart.h"
+#include "i2c.h"
 
 /* Enumeration */
 typedef enum
