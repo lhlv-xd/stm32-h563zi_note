@@ -17,7 +17,7 @@
 
 /* [Customization Header] Customized Shell CMD Header */
 #include "yysh_memory_cmds.h"
-
+#include "yysh_i2c_cmds.h"
 
 /* Structure */
 struct cmd {

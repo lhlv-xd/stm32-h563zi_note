@@ -19,7 +19,10 @@ static void yysh_help(void* data)
 	"  help                                           Print this help message.\r\n"
 	"  reboot                                         Reboot MCU.\r\n"
 	"  clear                                          Clear screen.\r\n"
-	"  memread <address> <size>                       Read MCU register.\r\n";
+	"  memread <address> <size>                       Read MCU register.\r\n"
+	"  i2cdump <slave addr>                           Dump I2C data.\r\n"
+	"  i2cget <slave addr> <reg addr> <size>          Read I2C data.\r\n"
+	"  i2cset <slave addr> <reg addr> <data>          Write I2C data.\r\n";
 
 	SHELL_PRINTF(help_msg);
 }
@@ -37,6 +40,9 @@ struct cmd cmds[] = {
 	{"help",               yysh_help               },
 	{"clear",              yysh_clear              },
 	{"memread",            yysh_read_memory        },
+	{"i2cdump",            yysh_i2cdump            },
+	{"i2cget",             yysh_i2cget             },
+	{"i2cset",             yysh_i2cset             },
 //	{"setenv",             yysh_setenv             },
 //	{"getenv",             yysh_getenv             }
 };
