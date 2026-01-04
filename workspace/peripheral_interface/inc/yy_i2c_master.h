@@ -26,5 +26,6 @@ yy_peripheral_StatusTypeDef yy_i2c_master_poll_write(uint8_t slave_address, uint
 /* Example Prototype */
 void yy_example_i2c_master_poll_read();
 void yy_example_i2c_master_poll_write();
+void yy_example_i2c_master_access_slave();
 
 #endif /* PERIPHERAL_INTERFACE_INC_YY_I2C_MASTER_H_ */

@@ -89,15 +89,15 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART3_UART_Init();
-  MX_I2C2_Init();
-  MX_I2C1_Init();
+//  MX_USART3_UART_Init();
+//  MX_I2C2_Init();
+//  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
   yy_shell_init();
   yy_i2c_master_init();
+  yy_i2c_slave_init();
 
-  yy_example_i2c_master_poll_write();
-  yy_example_i2c_master_poll_read();
+  yy_example_i2c_master_access_slave();
 
   /* USER CODE END 2 */
 

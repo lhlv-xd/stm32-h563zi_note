@@ -74,3 +74,55 @@ void yy_example_i2c_master_poll_write()
 
 	yy_i2c_master_poll_write(0x50, 0x0, data, 128);
 }
+
+/**
+ * @brief
+ */
+void yy_example_i2c_master_access_slave()
+{
+	uint8_t slave_address = 0x52;
+
+	/* ===== Test1: Write all reg ===== */
+	/* write reg range: 0x00-0xFF (Use Upper Page: Page7fh) */
+	uint8_t data[256];
+	for (int i = 0; i < 256; i++) {
+		data[i] = i & 0xff;
+	}
+	yy_i2c_master_poll_write(slave_address, 0x0, data, 256);
+
+	/* Read */
+	uint8_t recv_data[256];
+	yy_i2c_master_poll_read(slave_address, 0x00, recv_data, 256);
+	printf("\r\n Example: write reg range: 0x00-0xFF (Use Upper Page: Page7fh) : \r\n\t");
+	for (int i = 0; i < 256; i++) {
+		printf("%02x, ", recv_data[i]);
+		if ((i+1) % 16 == 0) {
+			printf("\r\n\t");
+		}
+	}
+
+
+	/* ===== Test2: Write all reg from Upper Page ===== */
+	/* write reg range: 0x00-0xFF (Use Upper Page: Page00h) */
+	for (int i = 0; i < 256; i++) {
+		data[i] = 0x00;
+	}
+	yy_i2c_master_poll_write(slave_address, 0x00, data, 256);
+
+	for (int i = 0; i < 256; i++) {
+		data[i] = i & 0xff;
+	}
+	yy_i2c_master_poll_write(slave_address, 0x81, data, 256);
+
+	/* Read */
+	yy_i2c_master_poll_read(slave_address, 0x00, recv_data, 256);
+	printf("\r\n Example: write reg range: 0x00-0xFF (Use Upper Page: Page00h) : \r\n\t");
+	for (int i = 0; i < 256; i++) {
+		printf("%02x, ", recv_data[i]);
+		if ((i+1) % 16 == 0) {
+			printf("\r\n\t");
+		}
+	}
+
+
+}
