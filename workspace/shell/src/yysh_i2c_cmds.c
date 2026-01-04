@@ -28,7 +28,8 @@ void yysh_i2cdump(void * data)
 
 	ret = yy_i2c_master_poll_read(slave_address, 0, recv_data, 256);
 	if (ret != 0) {
-		SHELL_DEBUG(YYSH_ERR, "i2cdump failed!\r\n");
+		SHELL_DEBUG(YYSH_ERR, "i2cdump failed! code: %d\r\n",ret);
+		return;
 	}
 
 	/* show recv_data */
@@ -56,7 +57,8 @@ void yysh_i2cget(void * data)
 
 	ret = yy_i2c_master_poll_read(slave_address, reg_address, recv_data, recv_size);
 	if (ret != 0) {
-		SHELL_DEBUG(YYSH_ERR, "i2cdump failed!\r\n");
+		SHELL_DEBUG(YYSH_ERR, "i2cdump failed! code: %d\r\n", ret);
+		return;
 	}
 
 	/* show recv_data */
@@ -86,7 +88,8 @@ void yysh_i2cset(void * data)
 
 	ret = yy_i2c_master_poll_write(slave_address, reg_address, &buf, 1);
 	if (ret != 0) {
-		SHELL_DEBUG(YYSH_ERR, "i2cset failed!\r\n");
+		SHELL_DEBUG(YYSH_ERR, "i2cset failed! code: %d\r\n", ret);
+		return;
 	}
 }
 
