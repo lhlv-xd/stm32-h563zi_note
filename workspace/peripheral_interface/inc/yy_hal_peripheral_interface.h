@@ -13,6 +13,8 @@
 #include "usart.h"
 #include "i2c.h"
 
+#include "yy_debug.h"
+
 /* Enumeration */
 typedef enum
 {

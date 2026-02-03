@@ -13,5 +13,6 @@
 #include "yy_i2c_master.h"
 #include "yy_i2c_slave.h"
 #include "yy_flash.h"
+#include "yy_debug.h"
 
 #endif /* YY_PERIPHERAL_INTERFACE_H_ */
