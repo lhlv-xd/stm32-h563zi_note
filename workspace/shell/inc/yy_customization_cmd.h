@@ -18,6 +18,8 @@
 /* [Customization Header] Customized Shell CMD Header */
 #include "yysh_memory_cmds.h"
 #include "yysh_i2c_cmds.h"
+#include "yysh_env_cmds.h"
+#include "yysh_flash_cmds.h"
 
 /* Structure */
 struct cmd {

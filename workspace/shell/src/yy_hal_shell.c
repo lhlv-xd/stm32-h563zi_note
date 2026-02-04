@@ -84,10 +84,21 @@ void yy_hal_shell_show(const char* format, ...)
  */
 uint8_t yy_hal_shell_flash_write(uint32_t addr, uint8_t* data, uint32_t data_size)
 {
-	return 0;
+	uint8_t status;
+	status = yy_flash_write(addr, data, data_size);
+	return status;
 }
 
 uint32_t yy_hal_shell_flash_read(uint32_t addr, uint8_t* data, uint32_t data_size)
 {
-	return 0;
+	uint8_t status;
+	status = yy_flash_read(addr, data, data_size);
+	return status;
+}
+
+uint32_t yy_hal_shell_flash_erase(uint32_t addr, uint32_t data_size)
+{
+	uint8_t status;
+	status = yy_flash_erase(addr, data_size);
+	return status;
 }

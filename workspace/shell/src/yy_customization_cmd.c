@@ -22,7 +22,11 @@ static void yysh_help(void* data)
 	"  memread <address> <size>                       Read MCU register.\r\n"
 	"  i2cdump <slave addr>                           Dump I2C data.\r\n"
 	"  i2cget <slave addr> <reg addr> <size>          Read I2C data.\r\n"
-	"  i2cset <slave addr> <reg addr> <data>          Write I2C data.\r\n";
+	"  i2cset <slave addr> <reg addr> <data>          Write I2C data.\r\n"
+	"  setenv <key> <value>                           Set env.\r\n"
+	"  getenv [<key>]                                 Print all env or specified env.\r\n"
+	"  delenv <key>                                   Delete specific env.\r\n"
+	"  flasherase <addr> <number of sectors>          Erase specific flash.\r\n";
 
 	SHELL_PRINTF(help_msg);
 }
@@ -43,8 +47,10 @@ struct cmd cmds[] = {
 	{"i2cdump",            yysh_i2cdump            },
 	{"i2cget",             yysh_i2cget             },
 	{"i2cset",             yysh_i2cset             },
-//	{"setenv",             yysh_setenv             },
-//	{"getenv",             yysh_getenv             }
+	{"setenv",             yysh_setenv             },
+	{"getenv",             yysh_getenv             },
+	{"delenv",             yysh_delenv             },
+	{"flasherase",         yysh_erase_flash        }
 };
 
 /*

@@ -12,6 +12,7 @@
 #include "main.h"
 #include "gpio.h"
 #include "usart.h"
+#include "yy_flash.h"
 
 /* Standard Header */
 #include <stdio.h>
@@ -32,6 +33,10 @@ extern UART_HandleTypeDef huart3;
 void yy_hal_shell_init();
 void yy_hal_shell_deinit();
 void yy_hal_shell_show(const char* format, ...);
+
+uint8_t yy_hal_shell_flash_write(uint32_t addr, uint8_t* data, uint32_t data_size);
+uint32_t yy_hal_shell_flash_read(uint32_t addr, uint8_t* data, uint32_t data_size);
+uint32_t yy_hal_shell_flash_erase(uint32_t addr, uint32_t data_size);
 
 
 #endif /* SHELL_INC_YY_HAL_SHELL_H_ */
