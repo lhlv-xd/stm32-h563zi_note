@@ -20,10 +20,11 @@
 
 
 /* Prototype */
-yy_peripheral_StatusTypeDef yy_flash_fw_write(uint32_t addr, uint8_t* data, uint32_t size);
-yy_peripheral_StatusTypeDef yy_flash_write();//uint32_t addr, uint8_t* data, uint32_t data_size);
+yy_peripheral_StatusTypeDef yy_flash_write(uint32_t addr, uint8_t* data, uint32_t size);
+yy_peripheral_StatusTypeDef yy_flash_read(uint32_t addr, uint8_t* data, uint32_t size);
+yy_peripheral_StatusTypeDef yy_flash_erase(uint32_t addr, uint32_t size);
 
 /* Example */
-yy_peripheral_StatusTypeDef yy_example_flash_fw_write();
+yy_peripheral_StatusTypeDef yy_example_flash_write_read();
 
 #endif /* PERIPHERAL_INTERFACE_INC_YY_FLASH_H_ */

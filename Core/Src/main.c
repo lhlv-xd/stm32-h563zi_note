@@ -97,7 +97,7 @@ int main(void)
   yy_i2c_master_init();
   yy_i2c_slave_init();
 
-  yy_info("Debug Message Test");
+  yy_example_flash_write_read();
 
   /* USER CODE END 2 */
 
