@@ -45,7 +45,7 @@ void yy_adc_single_transform()
 }
 
 
-static uint32_t adcbuf[3] = {0};
+static uint32_t adcbuf[2] = {0};
 /**
  * @brief Use adc by dma.
  */
@@ -53,11 +53,11 @@ void yy_adc_with_dma()
 {
 	/* Start adc + dma  */
 	HAL_ADCEx_Calibration_Start(&adcHdl, ADC_SINGLE_ENDED);
-	HAL_ADC_Start_DMA(&adcHdl, (uint32_t *)adcbuf, 3);
+	HAL_ADC_Start_DMA(&adcHdl, (uint32_t *)adcbuf, 2);
 
 	printf("\r\nstart\r\n");
 	while(1) {
-		printf("%d, %d, %d\r\n", adcbuf[0], adcbuf[1], adcbuf[2]);
+		printf("%d, %d\r\n", adcbuf[0], adcbuf[1]);
 		HAL_Delay(1000);
 	}
 
