@@ -18,6 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
+#include "gpdma.h"
 #include "i2c.h"
 #include "usart.h"
 #include "gpio.h"
@@ -89,16 +91,18 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_GPDMA1_Init();
 //  MX_USART3_UART_Init();
 //  MX_I2C2_Init();
+  MX_ADC1_Init();
 //  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
   yy_shell_init();
   yy_i2c_master_init();
   yy_i2c_slave_init();
 
-  yy_example_flash_write_read();
-
+//  yy_example_flash_write_read();
+  yy_adc_with_dma();
   /* USER CODE END 2 */
 
   /* Infinite loop */

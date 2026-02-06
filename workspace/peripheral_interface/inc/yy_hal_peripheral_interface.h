@@ -11,6 +11,7 @@
 #include "main.h"
 #include "gpio.h"
 #include "usart.h"
+#include "adc.h"
 #include "i2c.h"
 
 #include "yy_debug.h"
