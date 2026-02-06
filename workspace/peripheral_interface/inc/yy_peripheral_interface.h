@@ -15,5 +15,6 @@
 #include "yy_flash.h"
 #include "yy_debug.h"
 #include "yy_adc.h"
+#include "yy_spi.h"
 
 #endif /* YY_PERIPHERAL_INTERFACE_H_ */
