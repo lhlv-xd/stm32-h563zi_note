@@ -23,6 +23,8 @@ static void yysh_help(void* data)
 	"  i2cdump <slave addr>                           Dump I2C data.\r\n"
 	"  i2cget <slave addr> <reg addr> <size>          Read I2C data.\r\n"
 	"  i2cset <slave addr> <reg addr> <data>          Write I2C data.\r\n"
+	"  i2cshowpage                                    Show mcu i2c pages.\r\n"
+	"  i2csetpage <reg> <value>                       Set mcu i2c page.\r\n"
 	"  setenv <key> <value>                           Set env.\r\n"
 	"  getenv [<key>]                                 Print all env or specified env.\r\n"
 	"  delenv <key>                                   Delete specific env.\r\n"
@@ -47,6 +49,8 @@ struct cmd cmds[] = {
 	{"i2cdump",            yysh_i2cdump            },
 	{"i2cget",             yysh_i2cget             },
 	{"i2cset",             yysh_i2cset             },
+	{"i2cshowpage",        yysh_i2cshow_mcu_page   },
+	{"i2csetpage",         yysh_i2cset_mcu_page    },
 	{"setenv",             yysh_setenv             },
 	{"getenv",             yysh_getenv             },
 	{"delenv",             yysh_delenv             },

@@ -93,6 +93,81 @@ void yysh_i2cset(void * data)
 	}
 }
 
+/**************************************************************************
+ * I2C Slave Function
+ **************************************************************************/
+#define PAGE_SIZE 128
+extern uint8_t LowerPage[PAGE_SIZE];
+extern uint8_t Page00h[PAGE_SIZE];
+extern uint8_t Page7Fh[PAGE_SIZE];
+
+
+/**
+ * @brief Show mcu internal page.
+ */
+void yysh_i2cshow_mcu_page(void * data)
+{
+
+	uint8_t pages[256];
+	for (int i = 0; i < 128; i++) {
+		pages[i] = LowerPage[i];
+		switch (LowerPage[0x7F]) {
+			case 0x00:
+				pages[128+i] = Page00h[i];
+				break;
+			case 0x7F:
+				pages[128+i] = Page7Fh[i];
+				break;
+			default:
+				pages[128+i] = Page00h[i];
+				break;
+		}
+
+	}
+
+	show_i2c_data(0x52, 0x00, pages, 256);
+}
+
+
+/**
+ * @brief Set the specified register adress data.
+ */
+void yysh_i2cset_mcu_page(void * data)
+{
+	/* format is incorrect */
+	if (strncmp(tokens[1], "0x", 2) != 0 || strncmp(tokens[2], "0x", 2) != 0) {
+		return;
+	}
+
+	uint32_t reg, value;
+	reg = yysh_getvalue32(tokens[1]);
+	value = yysh_getvalue32(tokens[2]);
+
+	if (reg < 0x80) {
+		LowerPage[reg] = value;
+	}
+	else {
+		uint8_t *ptr;
+		switch (LowerPage[0x7F]) {
+			case 0x00:
+				ptr = &Page00h[0];
+				break;
+			case 0x7F:
+				ptr = &Page7Fh[0];
+				break;
+			default:
+				ptr = &Page00h[0];
+				break;
+		}
+		ptr[reg-0x80] = value;
+	}
+
+
+
+
+
+
+}
 
 /**************************************************************************
  * Static Function

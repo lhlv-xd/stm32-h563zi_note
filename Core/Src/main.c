@@ -105,7 +105,7 @@ int main(void)
   yy_spi_init();
 
 //  yy_example_flash_write_read();
-  yy_example_spi_transmitreceive();
+//  yy_example_spi_transmitreceive();
 
   /* USER CODE END 2 */
 

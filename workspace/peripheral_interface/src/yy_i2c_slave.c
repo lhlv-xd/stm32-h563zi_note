@@ -9,8 +9,6 @@
 
 
 /* ===== EEPROM-like memory ===== */
-#define PAGE_SIZE   128
-
 uint8_t LowerPage[PAGE_SIZE];
 uint8_t Page00h[PAGE_SIZE];
 uint8_t Page7Fh[PAGE_SIZE];
